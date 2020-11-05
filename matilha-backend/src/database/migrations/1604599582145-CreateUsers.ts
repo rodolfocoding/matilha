@@ -10,7 +10,7 @@ export default class CreateUsers1604599582145 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
-            generationStrategy: 'increment',
+            generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
           },
           {
@@ -35,7 +35,7 @@ export default class CreateUsers1604599582145 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'active',
+            name: 'ativo',
             type: 'boolean',
             default: true,
           },
