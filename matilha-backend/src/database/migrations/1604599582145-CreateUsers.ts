@@ -28,7 +28,7 @@ export default class CreateUsers1604599582145 implements MigrationInterface {
           },
           {
             name: 'carga_horaria',
-            type: 'varchar',
+            type: 'float',
           },
           {
             name: 'setor',

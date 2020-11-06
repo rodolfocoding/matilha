@@ -15,7 +15,7 @@ class User {
     password: string
 
     @Column()
-    carga_horaria: string
+    carga_horaria: number
 
     @Column()
     setor: string
