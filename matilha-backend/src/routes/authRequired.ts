@@ -1,7 +1,8 @@
+import { NextFunction } from 'express';
 import { decode } from 'jsonwebtoken';
 import AppError from '../errors/AppError';
 
-function authRequired(request: Request, response: Response, next): Promise<Response> {
+function authRequired(request: Request, response: Response, next: NextFunction): Promise<Response> {
     const { authorization : auth } = request.headers
     if(auth) {
         const token = auth.split(' ')
