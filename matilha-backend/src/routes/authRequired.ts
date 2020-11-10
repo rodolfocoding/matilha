@@ -2,11 +2,11 @@ import { NextFunction } from 'express';
 import { decode } from 'jsonwebtoken';
 import AppError from '../errors/AppError';
 
-function authRequired(request: Request, response: Response, next: NextFunction): Promise<Response> {
+function authRequired(request: Request, response: Response, next: NextFunction): Response {
     const { authorization } = request.headers
     if(authorization) {
         const token = authorization.split(' ')
-        if(token[0] !== "Bearer"|| token.length !== 2) {
+        if(token[0] !== 'Bearer'|| token.length !== 2 || token[1].trim() === '') {
             throw new AppError('não autorizado', 401);
         }
         request.token = token[1]
@@ -15,9 +15,10 @@ function authRequired(request: Request, response: Response, next: NextFunction):
             throw new AppError('não autorizado', 401);
         }
         request.tokenInfo = tokenInfo
-        return next()
+        next()
+    } else {
+        throw new AppError('não autorizado', 401);
     }
-    throw new AppError('não autorizado', 401);
 }
 
 export default authRequired
