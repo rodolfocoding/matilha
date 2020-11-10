@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
+import { decode } from 'jsonwebtoken';
 import CreateUserService from '../services/CreateUserService';
 import UserRepository from '../repositories/UserRepository';
 import EnableUserService from '../services/EnableUserService';
+import AppError from '../errors/AppError';
 
 class UserController {
     public async create(request: Request, response: Response): Promise<Response> {
@@ -32,6 +34,10 @@ class UserController {
         });
 
         return response.json(user);
+    }
+
+    public async me(request: Request, response: Response): Promise<Response> {
+    return response.json(request.tokenInfo)
     }
 }
 
