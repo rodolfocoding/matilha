@@ -19,7 +19,7 @@ class PointService {
   public async execute({ data_ponto, userId }: Request): Promise<Point> {
     const user = await this.pointRepository.create({
       data_ponto,
-      userId: '1',
+      userId: request.token.id,
     });
 
     return user;
