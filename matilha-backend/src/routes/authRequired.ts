@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction } from 'express';
 import { decode } from 'jsonwebtoken';
+import { Request, Response, NextFunction } from 'express';
 import unauthorizedMsg from '../errors/unauthorized';
 
 function authRequired(request: Request, response: Response, next: NextFunction): void {
@@ -8,7 +8,7 @@ function authRequired(request: Request, response: Response, next: NextFunction):
     if (!authorization) {
         return unauthorized(400);
     }
-    const token = typeof authorization === 'string' && authorization.split(' ') || [];
+    const token = authorization.split(' ') || [];
     if (token.length !== 2 || token[0] !== 'Bearer' || token[1].trim() === '') {
         return unauthorized(400);
     }
