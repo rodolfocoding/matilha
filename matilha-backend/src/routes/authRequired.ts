@@ -3,9 +3,9 @@ import { decode } from 'jsonwebtoken';
 import AppError from '../errors/AppError';
 
 function authRequired(request: Request, response: Response, next: NextFunction): Promise<Response> {
-    const { authorization : auth } = request.headers
-    if(auth) {
-        const token = auth.split(' ')
+    const { authorization } = request.headers
+    if(authorization) {
+        const token = authorization.split(' ')
         if(token[0] !== "Bearer"|| token.length !== 2) {
             throw new AppError('não autorizado', 401);
         }
