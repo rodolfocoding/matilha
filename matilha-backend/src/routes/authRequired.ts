@@ -1,8 +1,8 @@
-import { NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { decode } from 'jsonwebtoken';
 import AppError from '../errors/AppError';
 
-function authRequired(request: Request, response: Response, next: NextFunction): Response {
+function authRequired(request: Request, response: Response, next: NextFunction): void {
     const { authorization } = request.headers
     if(authorization) {
         const token = authorization.split(' ')
