@@ -40,10 +40,18 @@ class SessionService {
             throw new AppError('Usuário inativo', 401);
         }
 
-        const token = sign({}, process.env.APP_SECRET as string, {
-            expiresIn: '1d',
-        });
+        const tokenUserInfo = {
+            id: user.id,
+            nome: user.nome,
+            email: user.email,
+            setor: user.setor
+        }
 
+        const token = sign(
+            tokenUserInfo,
+            process.env.APP_SECRET as string,
+            { expiresIn: '1d' }
+        );
         
         return {
             token,
