@@ -9,15 +9,14 @@ function authRequired(request: Request, response: Response, next: NextFunction):
         return unauthorized(400);
     }
     const [ tokenPrefix, token ] = authorization.split(' ');
-    if (tokenPrefix !== 'Bearer' || !token || token.trim() === '') {
+    if (tokenPrefix !== 'Bearer' || !token) {
         return unauthorized(400);
     }
-    Object.assign(request, { ...request, token })
     const tokenInfo = decode(token);
     if (!tokenInfo) {
         return unauthorized(401);
     }
-    Object.assign(request, { ...request, tokenInfo })
+    Object.assign(request, { ...request, token, tokenInfo })
     next();
 }
 
