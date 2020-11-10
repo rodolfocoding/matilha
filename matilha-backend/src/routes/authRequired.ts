@@ -8,13 +8,13 @@ function authRequired(request: Request, response: Response, next: NextFunction):
     if (!authorization) {
         return unauthorized(400);
     }
-    const token = authorization.split(' ') || [];
-    if (token.length !== 2 || token[0] !== 'Bearer' || token[1].trim() === '') {
+    const [ tokenBearer, token ] = authorization.split(' ');
+    if (tokenBearer !== 'Bearer' || !token || token.trim() === '') {
         return unauthorized(400);
     }
-    Object.assign(request, { ...request, token: token[1] })
-    const tokenInfo = decode(token[1]);
-    if (tokenInfo === null) {
+    Object.assign(request, { ...request, token })
+    const tokenInfo = decode(token);
+    if (!tokenInfo) {
         return unauthorized(401);
     }
     Object.assign(request, { ...request, tokenInfo })
