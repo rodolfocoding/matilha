@@ -12,7 +12,12 @@ routes.get('/', (request, response) =>
 );
 
 routes.use(`${prefixRoutes}/sessions`, sessionRoutes);
-// routes.use(`${prefixRoutes}/users`, authRequired, userRoutes);
+
+/// se tu quizesse que a autenticacao estivesse presente em todos as rotas
+/// definidas em userRoutes, tu deveria utilizar o authRequired middleware 
+/// como esta na linha abaixo -- lembrar de descomentar o import la em cima
+/// routes.use(`${prefixRoutes}/users`, authRequired, userRoutes);
+
 routes.use(`${prefixRoutes}/users`, userRoutes);
 
 export default routes;
