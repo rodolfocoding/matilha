@@ -30,6 +30,7 @@ class SessionService {
         }
 
         const passwordCompare = await compare(password, user.password);
+        delete user.password
 
         if (!passwordCompare) {
             throw new AppError('Credenciais inválidas', 401);
@@ -43,6 +44,7 @@ class SessionService {
             expiresIn: '1d',
         });
 
+        
         return {
             token,
             user,
