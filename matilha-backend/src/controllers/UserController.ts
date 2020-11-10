@@ -36,8 +36,8 @@ class UserController {
         return response.json(user);
     }
 
-    public async me(request: Request, response: Response): Promise<Response> {
-    return response.json(request.tokenInfo)
+    public me(request: Request, response: Response): Response {
+        return response.json(request.tokenInfo)
     }
 }
 
