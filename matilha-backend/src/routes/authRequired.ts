@@ -8,8 +8,8 @@ function authRequired(request: Request, response: Response, next: NextFunction):
     if (!authorization) {
         return unauthorized(400);
     }
-    const [ tokenBearer, token ] = authorization.split(' ');
-    if (tokenBearer !== 'Bearer' || !token || token.trim() === '') {
+    const [ tokenPrefix, token ] = authorization.split(' ');
+    if (tokenPrefix !== 'Bearer' || !token || token.trim() === '') {
         return unauthorized(400);
     }
     Object.assign(request, { ...request, token })
