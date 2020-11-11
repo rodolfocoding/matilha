@@ -16,9 +16,9 @@ class PointRepository implements IPointRepository {
     });
   }
 
-  public async create({ data_ponto }: PointDTO): Promise<Point> {
+  public async create({ data_ponto, userId }: PointDTO): Promise<Point> {
     const point = this.ormRepository.create({
-      data_ponto,
+      data_ponto, userId
     });
 
     await this.ormRepository.save(point);
