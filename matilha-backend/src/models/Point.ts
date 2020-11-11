@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinColumn,
+  Column,
 } from 'typeorm';
 
 import User from '../models/User';
@@ -12,6 +13,9 @@ import User from '../models/User';
 class Point {
   @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @Column({ nullable: true })
+  userId: number;
 
   @ManyToOne((type) => User)
   @JoinColumn()
