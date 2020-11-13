@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
   registrarMarcacao(): void {
     console.log(this.badgeNumber);

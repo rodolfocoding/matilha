@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Components
 import { HomeComponent } from './home/home.component';
+import { MenuComponent } from './menu/menu.component';
 
 // Material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -14,8 +15,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 const Material = [
   MatToolbarModule,
@@ -24,11 +27,19 @@ const Material = [
   MatMenuModule,
   MatDividerModule,
   MatInputModule,
+  MatSidenavModule,
+  MatListModule,
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, FormsModule, Material],
+  declarations: [AppComponent, HomeComponent, MenuComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    Material,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
