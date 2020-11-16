@@ -6,8 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  cracha: string;
+  badgeNumber: string;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
+
+  registrarMarcacao(): void {
+    console.log(this.badgeNumber);
+  }
 }

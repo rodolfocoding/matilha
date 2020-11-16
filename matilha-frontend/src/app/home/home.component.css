@@ -1,48 +1,34 @@
-.spacer {
-  flex: 1 1 auto;
+input[type='number'] {
+  -moz-appearance:textfield;
 }
 
-.icon {
-  padding: 0 14px;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
-
-.form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-
-.flex-start {
-  justify-content: flex-start;
-}
-
 
 .container {
-  max-width: 420px;
-  margin: 0 auto;
   display: flex;
-}
-
-.column {
-  min-height: 200px;
-  flex-direction: column;
+  flex-flow: column;
+  height: calc(100% - 95px);
+  align-items: center;
 }
 
 .item {
 	margin: 5px;
-	padding: 0 10px;
-	text-align: center;
+	padding: 5px 10px;
+  text-align: center;
+}
+
+.mat-form-field, button{
+  width: 300px;
 }
 
 .watch {
-  font-size: 50px;
+  margin: 30px;
+  font-size: 80px;
 }
 
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+.content{
+  height: 800px;
 }

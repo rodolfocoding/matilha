@@ -1,0 +1,49 @@
+
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #sidenav mode="over" fixedInViewport="false">
+    <mat-toolbar color="primary">
+    </mat-toolbar>
+    <mat-selection-list #shoes [multiple]="false">
+      <mat-list-option *ngFor="let menu of menuList" [value]="menu">
+        {{ menu }}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-sidenav>
+
+
+  <mat-sidenav-content fxLayout="column">
+
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="icon" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+      <span>Relógio Virtual</span>
+      <span class="spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <span>Última marcação</span>
+        </button>
+        <button mat-menu-item disabled>
+          <span>Útimas marcações</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <router-outlet>
+      <!-- content change by changing the route -->
+    </router-outlet>
+
+    <mat-divider></mat-divider>
+
+    <footer class="footer">
+      <span>MATILHA PONTO © 2020 - 1.0.0</span>
+    </footer>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
