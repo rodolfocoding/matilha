@@ -17,10 +17,12 @@ mongoose.connect(
 
 //Carregando os models
 const User = require("./models/user");
+const Point = require("./models/Point");
 
 //carregar rotas
 const indexRoute = require("./routes/index-route");
 const userRoute = require("./routes/user-route");
+const pointRoute = require("./routes/point-route");
 
 app.use(
   express.json({
@@ -39,5 +41,6 @@ app.use((req, res, next) => {
 
 app.use("/", indexRoute);
 app.use("/users", userRoute);
+app.use("/points", pointRoute);
 
 module.exports = app;
