@@ -24,9 +24,19 @@ exports.post = async (request, response, next) => {
       return;
     }
 
+    console.log(passwordIsValid.name);
+
+    const date_point = new Date();
+    const minutes = date_point.getMinutes();
+    const convertMinutes = minutes / 60;
+
     await repository.create({
       user: data.id,
-      date_point: new Date(),
+      day_point: date_point.getDate(),
+      month_point: date_point.getMonth(),
+      year_point: date_point.getFullYear(),
+      hour_point: date_point.getHours(),
+      minute_point: convertMinutes,
     });
 
     response.status(201).send({
