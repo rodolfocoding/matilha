@@ -3,6 +3,7 @@
 const repository = require("../repositories/point-repositorie");
 const md5 = require("md5");
 const authService = require("../services/auth-service");
+const { response } = require("express");
 require("dotenv").config();
 
 exports.post = async (request, response, next) => {
@@ -46,6 +47,26 @@ exports.post = async (request, response, next) => {
     response.status(500).send({
       message: "Falha ao processar requisição!",
       data: e,
+    });
+  }
+};
+
+exports.getDatePoint = async (request, response, next) => {
+  try {
+    const datePoint = new Date();
+
+    const dia = datePoint.getDay();
+    const mes = datePoint.getMonth();
+    const ano = datePoint.getFullYear();
+
+    const dateFormat = dia + "/" + mes + "/" + ano;
+
+    response.status(200).send({
+      datePoint: dateFormat,
+    });
+  } catch (error) {
+    response.status(500).send({
+      message: "Falha ao processar requisição!",
     });
   }
 };
