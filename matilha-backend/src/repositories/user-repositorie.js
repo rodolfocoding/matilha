@@ -16,6 +16,16 @@ exports.authenticate = async (data) => {
   return res;
 };
 
+exports.getWorkLoad = async (id) => {
+  const res = await User.find(
+    {
+      _id: id,
+    },
+    "cargahoraria"
+  );
+  return res;
+};
+
 exports.getById = async (id) => {
   const res = await User.findById(id);
   return res;

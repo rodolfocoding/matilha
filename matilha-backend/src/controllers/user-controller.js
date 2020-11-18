@@ -95,3 +95,16 @@ exports.refreshToken = async (request, response, next) => {
     });
   }
 };
+
+exports.getWorkLoad = async (request, response) => {
+  try {
+    const data = await repository.getWorkLoad(request.params.id);
+
+    response.status(200).send(data);
+  } catch (error) {
+    response.status(500).send({
+      message: "Falha ao processar requisição!",
+      data: error,
+    });
+  }
+};
