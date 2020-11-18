@@ -13,6 +13,7 @@ exports.post = async (request, response, next) => {
       password: md5(request.body.password + process.env.APP_SECRET),
       cargahoraria: request.body.cargahoraria,
       setor: request.body.setor,
+      role: request.body.role,
     });
     response.status(201).send({
       message: "Usuário cadastrado com sucesso!",
@@ -45,6 +46,7 @@ exports.authenticate = async (request, response, next) => {
       name: user.name,
       setor: user.setor,
       cargahoraria: user.cargahoraria,
+      role: user.role,
     });
 
     response.status(201).send({
@@ -80,6 +82,7 @@ exports.refreshToken = async (request, response, next) => {
       id: user._id,
       email: user.email,
       name: user.name,
+      role: user.role,
     });
 
     response.status(201).send({
